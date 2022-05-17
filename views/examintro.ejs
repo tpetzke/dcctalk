@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+  </head>
+  <body>
+    <%- include('partials/main-menu.ejs') %>
+    <%
+      var exam = page.code;
+      var badgeimg = "/images/"+exam+"/"+exam.toLowerCase()+".png";
+    %>  
+    <div class="intro-container">
+        <div class="intro-left">
+            <img src="<%=badgeimg%>" alt="<%=exam%>" width="200" height="200">
+            <h1><%=page.Count%></h1>
+            <h3>Questions in database</h3>
+            <h3>Last Update <%=page.Date%></h3>
+            <form id="pt-button" name="action" method="get" action="/exam/update">
+                <button type="submit" class="blue-link-button">Join the discussion</button>
+            </form>
+            <form id="pt-button" name="action" method="get" action="/exam/init/<%=exam%>">
+                <button type="submit" class="blue-link-button">Practice Test</button> 
+            </form>
+        </div>
+        <div class="intro-right">
+            <h1>Exam: <%=exam%> <%=page.name%></h1>
+            <% for (i=0; i<page.outline.length; i++) { %>
+              <p><%=page.outline[i]%></p>
+            <% } %>
+            <p><b>Source:</b> <%=page.provider%></p>  
+            
+            <h2>Skills measured</h2>
+            <ul>  
+              <% for (i=0; i<page.sections.length; i++) { %>
+                <li><%=page.sections[i].longname%></li>
+              <% } %>
+            </ul>  
+
+            <h2>Learning path</h2>
+            <a href="https://docs.microsoft.com/en-us/learn/certifications/exams/<%=exam.toLowerCase()%>">https://docs.microsoft.com/en-us/learn/certifications/exams/<%=exam.toLowerCase()%></a>
+        </div>
+    </div>
+  </body>
+</html>

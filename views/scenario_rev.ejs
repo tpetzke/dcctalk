@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    
+  </head>
+  <body>
+    <form class="form-scenario" id="question" name="question" method="post" action="/exam/reviewer">
+      <%- include('partials/hiddeninputs.ejs') %>
+      <%- include('partials/toparea.ejs') %>
+
+      <div class="center-area">
+        <div class="content-area" id="content_area" style="float:left;">
+          <% if (page.question.Intro == "Scenario") { %><%- include('partials/introscenario.ejs') %><% } %>
+          <%- include('partials/intro.ejs') %>
+          <br>
+          <% for (i=0; i<page.question.Questions.length; i++) { 
+            var inputs = JSON.parse(page.inputs);
+            var selIndex = inputs.inputs[page.questionNo].answer[i]; 
+            var correctIndex = inputs.inputs[page.questionNo].correct[i]; %>
+            <div id="qdiv_<%=i%>" name="qdiv">
+              <p name="solution"><b><%=page.question.Questions[i].Header %></b></p>
+                            
+              <% for (j=0; j<page.question.Questions[i].Options.length; j++) {
+                var correctStr = (j == correctIndex) ? "correct" : ""; %>
+                <% if (j != selIndex) { %> 
+                <input type="radio" id="radio_<%=i%>_<%=j%>" value="<%=j%>" name="radio_<%=i%>" disabled >
+                <label for="radio_<%=i%>_<%=j%>" class="review-label <%=correctStr%>"><%= page.question.Questions[i].Options[j] %></label>
+                <% } else { %>
+                <input type="radio" id="radio_<%=i%>_<%=j%>" value="<%=j%>" name="radio_<%=i%>" checked="checked" disabled>
+                <label for="radio_<%=i%>_<%=j%>" class="review-label <%=correctStr%>"><%= page.question.Questions[i].Options[j] %></label>
+                <% } %>   
+              <% } %>
+            </div>
+          <% } %>
+          <h4>Explanation</h4>
+          <% for (i=0; i<page.question.Explanations.length; i++) { %>
+            <% if (page.question.Explanations[i].startsWith('<')) { %> <%- page.question.Explanations[i] %> <% } else { %>
+            <p><%=page.question.Explanations[i] %></p>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+      <%- include('partials/bottomarea.ejs') %>
+    </form>
+  </body>
+</html>

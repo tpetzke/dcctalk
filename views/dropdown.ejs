@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <%- include('partials/timer.ejs') %>
+  </head>
+  <body>
+    <form class="form-scenario" id="question" name="question" method="post" action="/exam/controller">
+      <%- include('partials/hiddeninputs.ejs') %>
+      <%- include('partials/toparea.ejs') %>
+
+      <div class="center-area">
+        <div class="content-area" id="content_area" style="float:left;">
+          <%- include('partials/intro.ejs') %>
+          <% if (page.question.DropAlignment && page.question.DropAlignment != "Horizontal") { %> 
+          <table class="center">
+            <% for (i=0; i<page.question.Questions.length; i++) {
+              var inputs = JSON.parse(page.inputs);
+              var selIndex = inputs.inputs[page.questionNo].answer[i];  
+            %>  
+            <tr>
+              <td><%= page.question.Questions[i].Header %></td>
+              <td align="left">
+                <select id="drop_<%=i%>" name="drop_<%=i%>" >
+                  <option value="-1" name="dropdown_<%=i%>" >Select an option</option>
+                  <% for (j=0; j<page.question.Questions[i].Options.length; j++) { %>
+                    <% if (j != selIndex) { %> 
+                      <option value="<%=j%>" name="dropdown_<%=i%>" ><%= page.question.Questions[i].Options[j] %></option>
+                    <% } else { %>
+                      <option value="<%=j%>" name="dropdown_<%=i%>" selected><%= page.question.Questions[i].Options[j] %></option>
+                    <% } %>   
+                  <% } %>
+              </select>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+          <% } %>
+          <% if (page.question.DropAlignment && page.question.DropAlignment == "Horizontal") { %> 
+            <table class="horizontal">
+              <tr>
+              <% for (i=0; i<page.question.Questions.length; i++) {
+                var inputs = JSON.parse(page.inputs);
+                var selIndex = inputs.inputs[page.questionNo].answer[i];  
+              %>  
+                <td><%= page.question.Questions[i].Header %></td>
+                <% if (page.question.Questions[i].Options.length) { %>
+                  <td align="left">
+                    <select id="drop_<%=i%>" name="drop_<%=i%>" >
+                      <option value="-1" name="dropdown_<%=i%>" >Select an option</option>
+                      <% for (j=0; j<page.question.Questions[i].Options.length; j++) { %>
+                        <% if (j != selIndex) { %> 
+                          <option value="<%=j%>" name="dropdown_<%=i%>" ><%= page.question.Questions[i].Options[j] %></option>
+                        <% } else { %>
+                          <option value="<%=j%>" name="dropdown_<%=i%>" selected><%= page.question.Questions[i].Options[j] %></option>
+                        <% } %>   
+                      <% } %>
+                  </select>
+                  </td>
+                <% } %>  
+              <% } %>
+              </tr>
+            </table>
+          <% } %>
+        </div>
+      </div>
+      <%- include('partials/bottomarea.ejs') %>
+    </form>
+  </body>
+</html>

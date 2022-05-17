@@ -1,0 +1,711 @@
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+h1 { 
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 26.4px; 
+}
+
+h2 { 
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 26.4px; 
+}
+
+h3 { 
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 14px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 15.4px; 
+}
+
+p { 
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 14px;
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 20px; } 
+
+blockquote { 
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 21px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 30px; 
+}
+
+pre { 
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 13px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 18.5714px; 
+}
+
+html, body {
+  height: 100%;
+}
+
+.top-area {
+  height: 15%;
+  margin: 0 0 0 0;
+  padding: 0 10px 0 50px;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 14px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 15.4px; 
+}
+
+.center-area {
+  height: 74%;
+  margin: 0 0 0 0;
+  padding: 0 10px 0 50px;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 14px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 15.4px; 
+}
+
+.bottom-area {
+  height: 10%;
+  margin: 0 0 0 0;
+  padding: 0 10px 0 50px;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 14px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 400; 
+  line-height: 15.4px; 
+  border-top: 1px solid rgb(208, 208, 212);
+}
+
+.header-left {
+  height: 100%;
+  width: 70%; 
+}
+
+.header-right {
+  width: 30%; 
+  height: 100%;
+  text-align: right;
+}
+
+.footer-left {
+  margin: 0 auto;
+  width: 80%; 
+  height: 100%;
+}
+
+.footer-xl-left {
+  margin: 0 auto;
+  width: 85%; 
+  height: 100%;
+}
+
+
+.footer-right {
+  margin: 0 auto;
+  width: 20%; 
+  height: 100%;
+}
+
+
+.content-area {
+  width: 100%; 
+  height: 100%;
+  overflow-y: auto;
+}
+
+.form-scenario{
+  height:100%;
+  overflow-y:auto
+}
+
+/* Elements */
+
+.mylabel {
+  border-color: #999;
+  border-width: 1px;
+  border-style: double;
+  padding: 10px;
+  display: block;
+  width: 90%;
+  margin-left: 30px;
+  margin-top: -27px;
+  margin-bottom: 30px;
+}
+
+.mylabel:hover{
+  border-color: rgb(104, 142, 245);
+  border-width: 2px;
+  padding: 9px;
+}
+
+.review-label {
+  border-color: #999;
+  border-width: 1px;
+  border-style: double;
+  padding: 10px;
+  display: block;
+  width: 90%;
+  margin-left: 30px;
+  margin-top: -27px;
+  margin-bottom: 30px;
+}
+
+.review-label.correct {
+  border-color: rgb(2, 117, 46);
+  background-color: #e4fcd1;
+}
+
+
+.nav-button {
+  margin: 10px;
+  background-color: #d8d8d8;
+  border: none;
+  min-width: 85px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  padding: 12px 18px;
+  text-align: center;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.nav-button:hover, a, a:visited, a:hover {
+  text-decoration: none;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.blue-link-button {
+  width: 80%;
+  margin: 15px;
+  background-color: #054b8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  text-align: center;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.blue-link-button:hover {
+  text-decoration: none;
+  background-color: #0074E1;
+  color: white;
+}
+
+.small-button {
+  margin: 10px;
+  background-color: #3671f1;
+  border: none;
+  min-width: 85px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  padding: 6px 18px;
+  text-align: center;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.small-button:hover, a, a:visited, a:hover {
+  text-decoration: none;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.small-green-button {
+  margin: 10px;
+  background-color: rgb(101,163,13);
+  border: none;
+  min-width: 85px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 6px 18px;
+  text-align: center;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin:0 auto;
+  display:block;
+}
+
+.small-green-button:hover {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: #3b6f11;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border-spacing: 1em .5em;
+  padding: 0 2em 1em 0;
+}
+
+table.center {
+  margin-left: 200; 
+  margin-right: auto;
+  width:900px;
+  text-align: right;
+}
+
+table.center td {
+  height: 60px;
+}
+
+div.table {
+  align-content: center; 
+  padding: 10%; 
+  width: 40px;
+}
+
+div.table.correct {
+  background-color: rgb(199, 243, 142);
+}
+
+table.horizontal {
+  margin-left: 200; 
+  margin-right: auto;
+  width:auto;
+  text-align: left;
+  line-height: 60px;
+}
+
+/* Dash Board Tiles */
+
+.tile {
+  width:200px;
+  height:220px;
+  border-radius:4px;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.15);
+  margin-top:20px;
+  margin-left:40px;
+  padding-top: 20px;
+  padding-left: 0px;
+  float:left;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 550;
+  text-align: center;  
+}
+
+.tile.green {
+  color: #609931;
+}
+
+.tile.red {
+  color: #ff0000;
+}
+
+.tile.blue {
+  color: #2260e7;
+}
+
+.tile-button {
+  width:200px;
+  height:200px;
+  border-radius:4px;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.15);
+  margin-top:10px;
+  margin-left:0px;
+  float:left;
+  text-align: center;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 100px;
+  font-weight: 350;  
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.tile-button:hover {
+  cursor: pointer;
+}
+
+.tile-button.green {
+  background: linear-gradient(to bottom right, #609931, #87bc27);;
+}
+
+.tile-button.red {
+  background: linear-gradient(to bottom right, #ff0000, #f18888);
+}
+
+.tile-button.blue {
+  background: linear-gradient(to bottom right, #2260e7, #5e79f5);
+}
+
+/* score canvas */
+canvas#scoreCanvas {
+  max-width: 768px;
+  max-height: 400px;
+  margin: 40px 40px auto;
+}
+
+/* Init Page */
+
+.init-container {
+  margin: 50px auto 0px 70px;
+  width: 1000px;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.init-center {
+  display: block;
+  width: 100%;
+  background-color: #FFFF00;
+  height: 250px;
+  margin: 10px 0 0px 0;
+}
+
+.init-center-right {
+  margin: 30px auto auto 30px;
+  text-align: left;
+  width: 700px;
+  font-style: normal; 
+  font-variant: normal; 
+}
+
+.init-center-right h2 {
+  font-size: 36px; 
+}
+
+.init-center-right table {
+  font-size: 20px; 
+  min-width: 100px;
+}
+
+.init-bottom-left {
+  margin: 300px 0px 0 70px;
+}
+
+.init-bottom-right {
+  margin: 20px 0 0 900px;
+}
+
+/* Style the main menu */
+#main_mnu_bar
+{
+    float: left;
+    height:50px;
+    width:90%;
+    margin:0px auto 0  auto;
+    text-align:left;
+    background:#000000;
+}
+
+/* The menu is basically a list */
+#main_mnu_bar ul
+{
+    float:left;
+    list-style:none;
+    margin: 6px 0 0 8px;
+}
+
+#main_mnu_bar ul li
+{
+    float:left;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    padding:6px 8px;
+}
+
+#main_mnu_bar ul li a
+{
+     color: white;
+     text-decoration: none;
+}
+
+#main_mnu_bar ul li a:hover
+{
+    text-decoration: underline;
+}
+/* End of Menu Definition */
+
+/* The admin menu is basically also a list */
+
+#admin_mnu_bar
+{
+    height:50px;
+    float: right;
+    width:10%;
+    margin:0px auto 0  auto;
+    text-align:left;
+    background:#000000;
+}
+
+
+#admin_mnu_bar ul
+{
+    float:right;
+    list-style:none;
+    margin: 6px 0 0 8px;
+}
+
+#admin_mnu_bar ul li
+{
+    float:right;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    padding:6px 8px;
+}
+
+#admin_mnu_bar ul li a
+{
+     color: white;
+     text-decoration: none;
+}
+
+#admin_mnu_bar ul li a:hover
+{
+    text-decoration: underline;
+}
+/* End of Menu Definition */
+
+/* Main Page */
+
+.div-index-top {
+  text-align: center;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 36px;
+  padding:6px 200px;
+  font-weight: 700;
+}
+
+.div-index-top h2{
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(78, 89, 248);
+}
+
+.div-index-top h3{
+  font-size: 24px;
+  font-weight: 400;
+  color: rgb(140, 140, 142);
+}
+
+.div-index-top p{
+  font-size: 16px;
+  font-weight: 300;
+  color: rgb(70, 70, 71);
+}
+
+.index-cert-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  width:1100px;
+  margin: 0 auto;
+  height: 450px;
+  overflow-y: auto;
+}
+
+.cert-button {
+  width: 180px;
+  height: 180px;
+  margin: 20px;
+  display: block;
+  position: relative;
+  border: #999;
+  background-color: white;
+  border-style: solid;
+  border-width:thin;
+  text-align: left;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  padding:6px ;
+  float: left;
+}
+
+.cert-button:hover {
+  background-color: #b1caff;
+  cursor: pointer;
+}
+
+.cert-button h1 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: -5px;
+}
+
+.cert-button h2 {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: -12px;
+  line-height: normal;
+}
+
+.cert-button p {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cert-button img {
+  display: block; 
+  position:absolute; 
+  top:0px; 
+  left: 40px;
+  width: 100px;
+  height: 100px;
+}
+
+/* Exam Intro Page */
+
+.intro-container {
+  display: block;
+  height: 100%;
+  max-height: 100%;
+  width:950px;
+  margin: 0 auto;
+  overflow-y: auto;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  padding:6px ;
+}
+
+.intro-left {
+  float: left;
+  width:220px;
+  margin: 0 auto;
+  height: 650px;
+  overflow-y: auto;
+  padding:6px ;
+  text-align: center;
+}
+
+.intro-right {
+  float: right;
+  width: 650px;
+  height: 650px;
+  overflow-y: auto;
+  padding:6px ;
+}
+
+.intro-container h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.intro-container h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.intro-container h3 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.intro-container p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.intro-container ul li {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.intro-container a {
+  font-size: 14px;
+  font-weight: 700;
+  background-color: white;
+  color: #2260e7;
+}
+
+/* START PAGE */
+
+.start-page-container {
+  display:block;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.start-headline {
+  height:300px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/images/workspace.jpg");
+  color: antiquewhite;
+}
+
+.start-headline h1 {
+  font-size: 50px;
+}
+
+.start-headline h2 {
+  font-size: 20px;
+}
+
+.start-headline p {
+  font-size: 14px;
+}
+
+.start-tile-container {
+  display: flex;                  /* establish flex container */
+  justify-content: space-between;
+  width: 1100px;
+  margin: 50px auto;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.start-tile-container > div {
+  width: 330px;
+  height: 330px;
+  display: block;
+  justify-content: center;
+  background-color: #efefef;
+}
+
+.start-tile-container > div > img {
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  display: block;
+}
+
+.start-tile-container > div > h1 {
+  text-align: center;
+  display: block;
+  font-weight: 400;
+}
+
+.start-tile-container > div > h2 {
+  text-align: center;
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.start-tile-container > div > p {
+  text-align: center;
+  display: block;
+  font-weight: 300;
+  padding: 0 -10px;
+  margin: 10px;
+}

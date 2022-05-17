@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <%- include('partials/timer.ejs') %>
+    <script type="text/javascript">
+
+      // makes sure only the max allowed numbers of checks is made 
+      function checkSelectionLimit(limit) {
+        var checkboxgroup = document.getElementById('content_area').getElementsByTagName("input");
+        for (var i = 0; i < checkboxgroup.length; i++) {
+          checkboxgroup[i].onclick = function() {
+            var checkedcount = 0;
+              for (var i = 0; i < checkboxgroup.length; i++) {
+              checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
+            }
+            if (checkedcount > limit) {
+              console.log("You can select maximum of " + limit + " checkbox.");
+              this.checked = false;
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form class="form-scenario" id="question" name="question" method="post" action="/exam/controller">
+      <%- include('partials/hiddeninputs.ejs') %>
+      <%- include('partials/toparea.ejs') %>
+
+      <div class="center-area">
+        <div class="content-area" id="content_area" style="float:left;">
+          <%- include('partials/intro.ejs') %>
+            
+          <% for (i=0; i<page.question.Questions.length; i++) { 
+            var inputs = JSON.parse(page.inputs);
+            var selIndex = Math.max(0, inputs.inputs[page.questionNo].answer[i]);  %>
+
+            <p><%=page.question.Questions[i].Header %></p><br>
+
+            <% for (j=0; j<page.question.Questions[i].Options.length; j++) { %>
+              <% if (Math.pow(2, j) & selIndex) { %> 
+              <input type="checkbox" id="cb_<%=i%>_<%=j%>" value="<%=Math.pow(2,j) %>" name="cb_<%=i%>" checked="checked"><label for="cb_<%=i%>_<%=j%>" class="mylabel"><%= page.question.Questions[i].Options[j] %></label>
+              <% } else { %>
+                <input type="checkbox" id="cb_<%=i%>_<%=j%>" value="<%=Math.pow(2,j) %>" name="cb_<%=i%>" ><label for="cb_<%=i%>_<%=j%>" class="mylabel"><%= page.question.Questions[i].Options[j] %></label>
+              <% } %>   
+            <% } %>
+          <% } %>
+        </div>
+        <script type="text/javascript">
+          checkSelectionLimit(<%= page.question.Checks%> )
+        </script>
+      </div>
+      <%- include('partials/bottomarea.ejs') %>
+    </div>
+    </form>
+  </body>
+</html>

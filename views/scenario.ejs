@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <%- include('partials/timer.ejs') %>
+  </head>
+  <script>
+    function next() {
+      var divs = document.getElementsByName("qdiv");
+      var sols = document.getElementsByName("solution");
+      for (i = 0; i < divs.length; i++) {
+        let hidden = divs[i].getAttribute("hidden");
+        if (!hidden) {
+          if (i < divs.length-1) {
+            document.getElementById("qno").innerText = "Scenario Part "+(i+2);
+            divs[i].setAttribute("hidden", "hidden");
+            divs[i+1].removeAttribute("hidden");
+          } else document.getElementById("btnNext").type = "submit";
+          break;
+        }
+      }
+    }
+  </script>
+  <body>
+    <form class="form-scenario" id="question" name="question" method="post" action="/exam/controller">
+    <%- include('partials/hiddeninputs.ejs') %>
+    <input type="hidden" id="review" name="review" value="-1">
+      <div class="top-area">
+        <div class="header-left" style="float: left;">
+            <input type="hidden" id="review" name="review" value="-1">
+            <h2>Question <%= page.questionNo+1 %> (of <%= page.questionTotals %>)</h2>
+            <h3 id="qno">Scenario Part 1</h3>
+        </div>
+        <div class="header-right" style="float: left;">
+            <% var remaining = parseInt(page.startTimestamp) + parseInt(page.totalTimeSec) - (Math.floor(Date.now() / 1000));
+              var remainingStr = new Date(remaining * 1000).toISOString().substr(12, 7);
+            %>
+            <h2>Time remaining <span id="time"><%= remainingStr %></span></h2>
+        </div>
+      </div>  
+
+      <div class="center-area">
+        <div class="content-area" style="float:left;">
+          <% if (page.question.Intro == "Scenario") { %><%- include('partials/introscenario.ejs') %><% } %>
+          <%- include('partials/intro.ejs') %>
+
+          <% for (i=0; i<page.question.Questions.length; i++) { 
+            var inputs = JSON.parse(page.inputs);
+            var selIndex = inputs.inputs[page.questionNo].answer[i];  %>
+            <div id="qdiv_<%=i%>" name="qdiv" <% if (i>0) { %> hidden <% } %>>
+              <p name="solution"><%=page.question.Questions[i].Header %></p><br>
+              <p>Does the solution meet the goal?</p><br>
+              
+              <% for (j=0; j<page.question.Questions[i].Options.length; j++) { %>
+                <% if (j != selIndex) { %> 
+                <input type="radio" id="radio_<%=i%>_<%=j%>" value="<%=j%>" name="radio_<%=i%>" ><label for="radio_<%=i%>_<%=j%>" class="mylabel"><%= page.question.Questions[i].Options[j] %></label>
+                <% } else { %>
+                <input type="radio" id="radio_<%=i%>_<%=j%>" value="<%=j%>" name="radio_<%=i%>" checked="checked" ><label for="radio_<%=i%>_<%=j%>" class="mylabel"><%= page.question.Questions[i].Options[j] %></label>
+                <% } %>   
+              <% } %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="bottom-area">
+        <div class="footer-xl-left" style="float: left;"></div>
+        <div class="footer-veryright" style="float: left;">
+          <button id="btnNext" name="action" value="Next" class="nav-button" type="button" onclick="next()">Next</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<div class="bottom-area">
+    <div class="footer-left" style="float: left;"></div>
+    <div class="footer-right" style="float: left;">
+         <% var previousBtnHidden = typeof page !== 'undefined' && page.questionNo == 0 ? "hidden" : ""; %>
+        <button id="btnPrevious" value="Previous" name="action" class="nav-button" <%= previousBtnHidden %>>Previous</button>
+        <button id="btnNext" value="Next" name="action" class="nav-button">Next</button>
+    </div>
+</div>

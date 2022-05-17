@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <script src="/javascripts/Chart.min.js"></script>
+  </head>
+  <body>
+    <form class="form-scenario" id="review" name="review" method="post" action="/exam/reviewer">
+      <%- include('partials/hiddeninputs.ejs') %>
+      
+      <div class="top-area">
+        <div class="header-left" style="float: left;">
+            <h2>Result Summary <%= details.title %></h2>
+            <h4><span style="display: inline-block; width: 200px;">Correct questions: <%= details.correct %></span>Incorrect questions: <%= details.incorrect %></h4>
+         </div>
+        <div class="header-right" style="float: left;"></div>
+      </div>  
+
+      <div class="center-area">
+        <div class="content-area" style="float:left;">
+          <h3><%= details.message %></h3>
+          <h3>Minimum score required to pass this exam: 700</h3>
+          <h3>Your score: <%= details.score %></h3>
+        
+          <div>
+            <p>
+              Each section, and its corressponding percentage of the exam, appears to the left of the chart. 
+              The length of the bars represent your section-level performance. Shorter bars reflect weaker performance, and 
+              longer bars reflect stronger performance.
+            </p>
+            <canvas id="scoreCanvas"></canvas>
+            <script>
+    
+              var canvas = document.getElementById('scoreCanvas');
+              
+              var horizontalBarChart = new Chart(canvas, {
+              type: 'horizontalBar',
+              data: {
+                  labels: <%- JSON.stringify(details.labels) %>,
+                  datasets: [{
+                    data: <%- JSON.stringify(details.sectionScore) %>,
+                    backgroundColor: ["#3671f1", "#3671f1", "#3671f1", "#3671f1", "#3671f1", "#3671f1"], 
+                  }],
+              },
+              options: {
+                  tooltips: {
+                    enabled: false
+                  },
+                  responsive: true,
+                  legend: {
+                    display: false,
+                    position: 'bottom',
+                    fullWidth: true,
+                    labels: {
+                      boxWidth: 10,
+                      padding: 50
+                    }
+                  },
+                  scales: {
+                    yAxes: [{
+                      barPercentage: 0.75,
+                      gridLines: {
+                        display: true,
+                        drawTicks: true,
+                        drawOnChartArea: false
+                      },
+                      ticks: {
+                        fontColor: '#555759',
+                        fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;',
+                        fontSize: 14,
+                      }
+                        
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                          display: true,
+                          drawTicks: false,
+                          tickMarkLength: 5,
+                          drawBorder: false
+                        },
+                      ticks: {
+                        padding: 5,
+                        beginAtZero: true,
+                        max: 100,
+                        fontColor: '#555759',
+                        fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;',
+                        fontSize: 11,
+                        callback: function(label, index, labels) {
+                          return label/1+"%";
+                        }
+                          
+                      },
+                        scaleLabel: {
+                          display: true,
+                          padding: 10,
+                          fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;',
+                          fontSize: 16,
+                          fontColor: '#555759',
+                          fontStyle: 700,
+                          labelString: 'Performance by exam section'
+                        },
+                      
+                    }]
+                  }
+              }
+            });
+
+
+            </script>
+          </div>
+          <h3>Review answers</h3>
+          <select id="dd_answers" name="dd_answers" >
+            <option value="answers" name="answers" >All answers</option>
+            <option value="correct" name="correct" >Correct answers</option>
+            <option value="incorrect" name="incorrect" >Incorrect answers</option>
+          </select>
+          <button id="btnAnswers" name="action" value="Answers" class="small-button">Show Answers</button>
+        </div>
+      </div>
+      <div class="bottom-area">
+        <div class="footer-xl-left" style="float: left;"></div>
+        <div class="footer-veryright" style="float: left;">
+          <button id="btnFinish" name="action" value="EndExam" class="nav-button">End Exam</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

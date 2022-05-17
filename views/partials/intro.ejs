@@ -1,0 +1,6 @@
+  <% if (page.question.Intro == "Casestudy") { %> <%- include('introcasestudy.ejs') %> <% } %>
+  <% for (i=0; i<page.question.Scenario.length; i++) { %>
+    <% if (page.question.Scenario[i].startsWith('<')) { %> <%- page.question.Scenario[i] %> <% } else { %>
+    <p><%=page.question.Scenario[i] %></p>
+    <% } %>
+  <% } %>

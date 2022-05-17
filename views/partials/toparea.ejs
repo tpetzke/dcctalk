@@ -1,0 +1,15 @@
+<div class="top-area">
+    <div class="header-left" style="float: left;">
+        <h2>Question <%= page.questionNo+1 %> (of <%= page.questionTotals %>)</h2>
+        <% 
+          let inputs = JSON.parse(page.inputs);
+          var c = inputs.inputs[page.questionNo].review == 1 ? "checked" : ""; %>
+        <input type="checkbox" id="review" name="review" value="1" <%= c %>><label for="review">Review later</label>
+    </div>
+    <div class="header-right" style="float: left;">
+        <% var remaining = parseInt(page.startTimestamp) + parseInt(page.totalTimeSec) - (Math.floor(Date.now() / 1000));
+           var remainingStr = new Date(remaining * 1000).toISOString().substr(12, 7);
+        %>
+        <h2>Time remaining <span id="time"><%= remainingStr %></span></h2>
+    </div>
+</div>

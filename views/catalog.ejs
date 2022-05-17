@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+  </head>
+  <body>
+    <%- include('partials/main-menu.ejs') %>
+    <div class="start-headline">
+      <div style="float:left; margin-top: 50px; margin-left: 50px;">
+        <h2>Boost your skills</h2>
+        <h1>Exam Library</h1>
+        <p>Here you find a lists of the exams and certifications we cover so far.</p>
+      </div>      
+    </div>
+    <div class="index-cert-container">
+      <form id="hallo" method="post" action="/exam/examintro" >
+        <% for (i=0; i < content.length; i++) {
+          
+          var exam = content[i].Exam;
+          var count = content[i].Count;
+          var badgeimg = "/images/"+exam+"/"+exam.toLowerCase()+".png";
+          var name = content[i].Name;
+          const date = new Date(content[i].Date);
+          const dateStr = date.toLocaleDateString('en-GB', {  
+            day:   'numeric',
+            month: 'short',
+            year:  'numeric',
+          }); 
+          
+          %>
+          <button class="cert-button" type="submit" name="code" value="<%=exam%>"">
+            <img src="<%=badgeimg%>" alt="<%=exam%>">
+            <div style="display: block; position:absolute; top:100px; left: 5px;"> 
+              <h1><%=exam%></h1>
+              <h2><%=name%></h2>
+              <p><b>Questions: </b><%=count%> &nbsp;&nbsp;<b>Update:</b> <%=dateStr%><p>
+            </div>
+          </button>
+        <% } %>  
+    
+      </form>
+    </div>
+    
+  </body>
+</html>

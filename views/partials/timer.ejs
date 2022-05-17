@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      setInterval(function () {
+          hours = parseInt(timer / 3600, 10);
+          minutes = parseInt((timer-hours*3600) / 60, 10);
+          seconds = parseInt((timer-hours*3600) % 60, 10);
+          
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+          display.textContent = hours + ":" + minutes + ":" + seconds;
+  
+          if (--timer < 0) {
+              timer = duration;
+          }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      display = document.querySelector('#time');
+      var remaining = <%- parseInt(page.startTimestamp) + parseInt(page.totalTimeSec) - (Math.floor(Date.now() / 1000)); %>
+      startTimer(remaining, display);
+    };
+  </script>
+  

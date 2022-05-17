@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <%- include('partials/timer.ejs') %>
+  </head>
+  <body>
+    <form class="form-scenario" id="review" name="review" method="post" action="/exam/controller">
+      <%- include('partials/hiddeninputs.ejs') %>
+      
+      <div class="top-area">
+        <div class="header-left" style="float: left;">
+            <h2>Review your answers:</h2>
+            <h2>Question available for review (<%= page.answered+page.unanswered%> Totals)</h2>
+        </div>
+        <div class="header-right" style="float: left;">
+ 
+          <h2>Time remaining <span id="time">1:00:00</span></h2>
+        </div>
+      </div>  
+
+      <div class="center-area">
+        <div class="content-area" style="float:left;">
+
+          <div class="tile green">
+            Answered
+          <button id="btnTest" name="action" value="Answered" class="tile-button green"><%= page.answered%></button>
+          </div>  
+          <div class="tile red">
+            Unanswered
+            <button id="btnTest" name="action" value="Unanswered" class="tile-button red"><%= page.unanswered%></button>
+          </div>
+          <div class="tile blue">
+            Review
+            <button id="btnTest" name="action" value="Review" class="tile-button blue"><%= page.review%></button>
+          </div>  
+
+        </div>
+      </div>
+      <div class="bottom-area">
+        <div class="footer-xl-left" style="float: left;"></div>
+        <div class="footer-veryright" style="float: left;">
+          <button id="btnFinish" name="action" value="Finish" class="nav-button">Finish</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

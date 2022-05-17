@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <%- include('partials/timer.ejs') %>
+   </head>
+  <body>
+    <form class="form-scenario" id="question" name="question" method="post" action="/exam/controller">
+      <%- include('partials/hiddeninputs.ejs') %>
+      <%- include('partials/toparea.ejs') %>
+
+      <div class="center-area">
+        <div class="content-area" id="content_area" style="float:left;">
+          <%- include('partials/intro.ejs') %>
+          <table class="center">
+            <tr>
+              <th>Statements</th>
+              <th>Yes</th>
+              <th>No</th>
+            </tr>
+            <% for (i=0; i<page.question.Questions.length; i++) { 
+              var inputs = JSON.parse(page.inputs);
+              var selIndex = inputs.inputs[page.questionNo].answer[i];  
+              var yesIsChecked = ""; if (selIndex == 0) yesIsChecked = "checked=\"checked\"";
+              var noIsChecked = ""; if (selIndex == 1) noIsChecked = "checked=\"checked\"";
+            %> 
+            <tr>
+              <td><%= page.question.Questions[i].Header %></td>
+              <td><input type="radio" id="radio_<%=i%>Yes" name="radio_<%=i%>" value="0" <%=yesIsChecked%> ></td>
+              <td><input type="radio" id="radio_<%=i%>No" name="radio_<%=i%>" value="1" <%=noIsChecked%> ></td>
+            </tr>
+            <% } %>
+          </table>   
+        </div>
+      </div>
+      <%- include('partials/bottomarea.ejs') %>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DCC Talk</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.png">
+  </head>
+  <body>
+    <div class="start-page-container">
+    <%- include('partials/main-menu.ejs') %>
+
+    <div class="start-headline">
+      <div style="float:left; margin-top: 50px; margin-left: 50px;">
+        <h2>Boost your skills</h2>
+        <h1>DCC Talk</h1>
+        <p>DCC is the roman numeral for 700, which is the passing grade for important technology related certifications.</p>
+      </div>      
+    </div>
+    <div class="start-tile-container">
+      <div class="start-tile">
+        <img src="/images/start/mission.png" alt="Mission">
+        <h1>Our Mission</h1>
+        <p>At DCC Talk we wan to enable technical professionals to be even more professional.</p>
+        <p>It is platform that helps you prepare for a certification, to get help from others and to encourace giveback.</p>
+        <button class="small-green-button">Read more</button>
+      </div>
+      <div class="start-tile">
+        <img src="/images/start/exam.png" alt="Exams">
+        <h1>Exams Library</h1>
+        <p>We maintain a set technical exam topics for cloud related certifications.</p>
+        <p>This includes practice tests with questions from the exam outline. There are no brain dumps. If you want to take shortcuts, this site is not for you.</p>
+        <form method="get" action="/exam/catalog">
+          <button class="small-green-button">Enter library</button>
+        </form>    
+        </div>
+      <div class="start-tile">
+        <img src="/images/start/news.png" alt="News">
+        <h1>News & Updates</h1>
+        <%    
+          const date = new Date(news[0].Date);
+          const dateStr = date.toLocaleDateString('en-GB', {  
+            day:   'numeric',
+            month: 'short',
+            year:  'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
+          });
+        %> 
+        <h2><%=dateStr%></h2>
+        <p><%=news[0].News%></p><br>
+        <button class="small-green-button">Watch the news</button>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
