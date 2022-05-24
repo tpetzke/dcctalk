@@ -22,4 +22,10 @@ router.get('/', async function(req, res, next) {
 
 });
 
+router.get('/register', async function(req, res, next) {
+  
+  res.render('register');
+
+});
+
 module.exports = router;

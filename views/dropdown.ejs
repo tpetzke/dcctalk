@@ -21,7 +21,9 @@
               var selIndex = inputs.inputs[page.questionNo].answer[i];  
             %>  
             <tr>
-              <td><%= page.question.Questions[i].Header %></td>
+              <% if (page.question.DropAlignment && page.question.DropAlignment != "VerticalRight") { %> 
+                <td><%= page.question.Questions[i].Header %></td>
+              <% } %>
               <td align="left">
                 <select id="drop_<%=i%>" name="drop_<%=i%>" >
                   <option value="-1" name="dropdown_<%=i%>" >Select an option</option>
@@ -34,6 +36,9 @@
                   <% } %>
               </select>
               </td>
+              <% if (page.question.DropAlignment && page.question.DropAlignment == "VerticalRight") { %> 
+                <td style="text-align:left"><%= page.question.Questions[i].Header %></td>
+              <% } %>
             </tr>
             <% } %>
           </table>

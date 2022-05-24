@@ -139,7 +139,7 @@ router.get('/init/:exam', async function(req, res, next) {
       exam: exam,
       questionNo : 0,
       questionTotals : inputs.inputs.length,
-      examName: "Microsoft "+CODE+" "+Scoring.getExamName(CODE),
+      examName: "Microsoft "+exam+" "+Scoring.getExamName(exam),
       timeRemaining : 3600, 
       questionIds : questionIds,
       inputs : JSON.stringify(inputs),
@@ -338,6 +338,10 @@ router.post('/reviewer', async function(req, res, next) {
   if (action == "Answers") { 
     filter = req.body.dd_answers;
     action = "First";
+  }
+
+  if (action == "EndExam") { 
+    return res.redirect("/");
   }
 
   var newQuestionNo = getNextQuestionIndexRev(inputs, filter, parseInt(questionNo), action);

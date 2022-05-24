@@ -55,6 +55,28 @@ pre {
   line-height: 18.5714px; 
 }
 
+.forumlabel {
+  display:block;
+  margin-left: 18px;
+  margin-top: 4px;
+  font-size: 9px;
+  color: #0074E1;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 12px;
+}
+
+.foruminput[type="text"], foruminput[type="email"], .foruminput[type="password"], .forumselect {
+  width: 400px;
+  padding: 9px 15px;
+  margin: 2px 15px 8px 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+  font-size: 14px;
+}
+
 html, body {
   height: 100%;
 }
